@@ -2,26 +2,33 @@
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
+    <div class="footer-brand">
       <h3>Medical Center Eye Institute</h3>
-      <address>
-        123 Main St.<br />
+      <p class="muted">Modern ophthalmology care with placeholder demo content prepared for client review.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/patient-information">Patient Information</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <address class="footer-contact">
+        Placeholder phone: <a href="tel:+10000000000">(000) 000-0000</a><br />
+        Placeholder address: 123 Medical Plaza, Suite 200<br />
         City, State ZIP<br />
-        <a href="tel:+10000000000">(000) 000-0000</a>
+        Office hours pending client confirmation
       </address>
-    </div>
-    <div>
-      <h4>Office Hours</h4>
-      <p>Mon–Fri: 8:30 AM – 5:00 PM<br />Sat: By appointment</p>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Use</a></li>
+      <ul class="footer-links footer-legal">
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
   </div>
-  <div class="container copyright">© <span id="year"></span> Medical Center Eye Institute — placeholder content</div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <div class="container copyright">© {new Date().getFullYear()} Medical Center Eye Institute. Demo content only.</div>
 </footer>

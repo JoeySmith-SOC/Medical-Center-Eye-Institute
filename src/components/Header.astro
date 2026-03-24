@@ -3,16 +3,19 @@ const { siteTitle = 'Medical Center Eye Institute' } = Astro.props
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/">{siteTitle}</a>
-    <nav class="nav">
+    <a class="logo" href="/" aria-label={`${siteTitle} home`}>
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">{siteTitle}</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/services">Services</a></li>
-        <li><a href="/patient-info">Patient Info</a></li>
+        <li><a href="/patient-information">Patient Information</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
-    <a class="cta nav-cta" href="/contact">Request Appointment</a>
+    <a class="btn primary nav-cta" href="/contact">Request Appointment</a>
   </div>
 </header>

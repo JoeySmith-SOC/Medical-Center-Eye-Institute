@@ -1,65 +1,197 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
+import CTA from '../components/CTA.astro'
 import Hero from '../components/Hero.astro'
 import SectionHeader from '../components/SectionHeader.astro'
 import ServiceCard from '../components/ServiceCard.astro'
-import CTA from '../components/CTA.astro'
+import MainLayout from '../layouts/MainLayout.astro'
 
 const pageTitle = 'Home'
-const pageDescription = 'Welcome to Medical Center Eye Institute — placeholder content.'
+const pageDescription =
+  'Medical Center Eye Institute is a modern ophthalmology practice demo website featuring patient-centered eye care, specialty services, and a polished appointment experience.'
+
+const featuredServices = [
+  {
+    title: 'Comprehensive Eye Exams',
+    excerpt:
+      'Routine and preventive visits designed to support clear vision, long-term ocular health, and thoughtful conversations about your concerns.',
+  },
+  {
+    title: 'Cataract Evaluations',
+    excerpt:
+      'Clear, reassuring assessments for patients experiencing visual changes and exploring next steps with confidence.',
+  },
+  {
+    title: 'Glaucoma Care',
+    excerpt:
+      'Ongoing monitoring and treatment planning supported by modern diagnostics and careful follow-up.',
+  },
+  {
+    title: 'Diabetic Eye Care',
+    excerpt:
+      'Focused retinal health evaluations that help patients stay proactive about diabetes-related vision changes.',
+  },
+]
+
+const valuePoints = [
+  {
+    title: 'Compassionate care',
+    copy:
+      'Each visit is designed to feel welcoming, unrushed, and attentive to the questions patients bring with them.',
+  },
+  {
+    title: 'Modern diagnostics',
+    copy:
+      'Clinical decision-making is supported by contemporary ophthalmic technology and a careful, evidence-informed approach.',
+  },
+  {
+    title: 'Personalized treatment',
+    copy:
+      'Recommendations are tailored to each patient’s vision needs, medical history, and lifestyle priorities.',
+  },
+  {
+    title: 'Convenient patient support',
+    copy:
+      'From appointment planning to visit preparation, the experience is organized to feel clear and manageable.',
+  },
+]
 ---
+
 <MainLayout title={pageTitle} description={pageDescription}>
   <Hero
-    eyebrow="Comprehensive Eye Care"
-    title="Compassionate, Modern Eye Care"
-    copy="We provide thorough evaluations and personalized treatment plans. This is a design and content placeholder — replace with your clinic's messaging."
+    eyebrow="Ophthalmology Care"
+    title="Trusted eye care with a calm, modern patient experience."
+    copy="Medical Center Eye Institute is a demo ophthalmology practice website created to showcase a reassuring, premium digital presence for comprehensive eye care, specialty evaluation, and ongoing patient support."
     ctaText="Request Appointment"
     ctaHref="/contact"
+    secondaryCtaText="View Services"
+    secondaryCtaHref="/services"
+    mediaEyebrow="Image Placeholder"
+    mediaTitle="Future office or provider photography"
+    mediaCopy="Replace this panel with approved clinic imagery, a provider portrait, or an exam-room photo once final creative assets are available."
   />
 
-  <section class="container about-preview">
-    <SectionHeader title="About the Practice" subtitle="Patient-focused care with a calm, modern approach." />
-    <p class="muted">This section is a concise practice summary placeholder. Replace with the practice mission, approach, and patient-first messaging.</p>
-  </section>
-
-  <section class="container services-preview">
-    <SectionHeader title="Featured Services" />
-    <div class="services-grid">
-      <ServiceCard title="Comprehensive Eye Exams" excerpt="Thorough exams for vision and eye health." />
-      <ServiceCard title="Cataract Evaluations" excerpt="Personalized evaluation for cataract treatment options." />
-      <ServiceCard title="Glaucoma Care" excerpt="Ongoing management and monitoring to protect vision." />
-    </div>
-  </section>
-
-  <section class="container why-us">
-    <SectionHeader title="Why Choose Us" />
-    <ul class="features-list">
-      <li>Patient-centered care</li>
-      <li>Modern diagnostic technology</li>
-      <li>Clear communication and follow-up</li>
-    </ul>
-  </section>
-
-  <section class="container providers">
-    <SectionHeader title="Our Providers" subtitle="Provider highlight placeholder" />
-    <div class="provider-card">
-      <div class="provider-photo">Provider photo placeholder</div>
+  <section class="section-shell">
+    <div class="container section-grid section-grid--about">
       <div>
-        <h3>Provider Name — Placeholder</h3>
-        <p class="muted">Bio placeholder. Do not include real names or credentials until the client provides them.</p>
+        <SectionHeader
+          title="A patient-centered approach to ophthalmology"
+          subtitle="Thoughtful communication, a polished clinical environment, and a focus on long-term vision health."
+        />
+      </div>
+      <div class="info-panel">
+        <p>
+          This homepage preview presents a calm, trustworthy introduction to the practice. The copy is intentionally polished and
+          realistic while remaining placeholder content until client details, provider profiles, and final office information are
+          confirmed.
+        </p>
+        <a class="btn secondary" href="/about">About the Practice</a>
       </div>
     </div>
   </section>
 
-  <section class="container patient-preview">
-    <SectionHeader title="Patient Information" subtitle="Prepare for your visit" />
-    <p class="muted">Short preview — link to the detailed Patient Information page with forms, FAQs, and policies.</p>
+  <section class="section-shell section-shell--tinted" aria-labelledby="featured-services-heading">
+    <div class="container">
+      <SectionHeader
+        headingId="featured-services-heading"
+        title="Featured services"
+        subtitle="Core ophthalmology service highlights presented with concise, demo-ready descriptions."
+      />
+      <div class="services-grid">
+        {featuredServices.map((service) => (
+          <ServiceCard title={service.title} excerpt={service.excerpt} />
+        ))}
+      </div>
+      <div class="section-actions">
+        <a class="btn secondary" href="/services">Explore All Services</a>
+      </div>
+    </div>
   </section>
 
-  <section class="container contact-preview">
-    <SectionHeader title="Contact & Location" />
-    <p class="muted">Address and phone placeholders. Replace with accurate contact details before publishing.</p>
+  <section class="section-shell" aria-labelledby="why-choose-us-heading">
+    <div class="container">
+      <SectionHeader
+        headingId="why-choose-us-heading"
+        title="Why patients choose us"
+        subtitle="A premium care experience should feel both clinically confident and genuinely supportive."
+      />
+      <div class="value-grid">
+        {valuePoints.map((item) => (
+          <article class="value-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
   </section>
 
-  <CTA title="Ready to Schedule?" copy="Contact our office to request an appointment. This is a placeholder CTA." ctaText="Request Appointment" ctaHref="/contact" />
+  <section class="section-shell section-shell--soft">
+    <div class="container provider-highlight">
+      <div class="provider-visual" aria-hidden="true">
+        <div class="provider-photo">Provider photo placeholder</div>
+      </div>
+      <div class="provider-copy">
+        <SectionHeader
+          title="Provider highlight"
+          subtitle="Placeholder profile content for physician biography and credentials."
+        />
+        <p>
+          Placeholder bio: introduce the lead ophthalmologist or provider team here with a warm overview of philosophy, specialty
+          focus, and approach to patient care.
+        </p>
+        <p class="muted">
+          Placeholder credentials: add verified education, board certification, fellowship training, affiliations, and professional
+          distinctions after client approval.
+        </p>
+        <a class="btn secondary" href="/about">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container preview-grid">
+      <article class="content-card">
+        <SectionHeader
+          title="Patient information"
+          subtitle="A simple introduction to what new patients can expect before their visit."
+        />
+        <p>
+          The patient information section can guide visitors through forms, insurance placeholders, visit preparation, and arrival
+          expectations in a way that feels organized and reassuring.
+        </p>
+        <a class="btn secondary" href="/patient-information">Patient Information</a>
+      </article>
+
+      <article class="content-card">
+        <SectionHeader
+          title="Contact preview"
+          subtitle="Key office details are shown here as placeholders pending client confirmation."
+        />
+        <dl class="contact-list">
+          <div>
+            <dt>Phone</dt>
+            <dd><a href="tel:+10000000000">(000) 000-0000</a></dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>123 Medical Plaza, Suite 200, City, State ZIP</dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Mon-Fri, 8:00 AM-5:00 PM; hours pending confirmation</dd>
+          </div>
+        </dl>
+        <p class="muted">All contact details above are placeholders for demo use only until final office information is provided.</p>
+        <a class="btn secondary" href="/contact">Contact Us</a>
+      </article>
+    </div>
+  </section>
+
+  <CTA
+    eyebrow="Schedule a Visit"
+    title="Ready to request an appointment?"
+    copy="When the practice is ready to launch, this call to action can guide patients toward the next step with clear, reassuring language and a streamlined contact experience."
+    ctaText="Request Appointment"
+    ctaHref="/contact"
+  />
 </MainLayout>

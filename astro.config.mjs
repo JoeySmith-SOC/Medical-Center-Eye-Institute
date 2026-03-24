@@ -1,14 +1,22 @@
 import { defineConfig } from 'astro/config'
 
-// Note: When deploying to GitHub Pages, set `base` to the repository name path
-// e.g. base: '/REPO_NAME/' if you host at https://username.github.io/REPO_NAME
-// Keep `base` = '/' for local dev; update before final deploy if needed.
+// GitHub Pages project-site config:
+// Default placeholder repo name: `medical-center-eye-institute-site`
+// Expected URL pattern: https://USERNAME.github.io/medical-center-eye-institute-site/
+//
+// Update both values below if:
+// 1. The repository name changes, or
+// 2. You later move to a custom domain.
+//
+// For a custom domain later:
+// - set `site` to your final production URL, for example https://www.example.com
+// - set `base` to '/' unless your site is intentionally served from a subpath
 
 export default defineConfig({
-  site: "https://USERNAME.github.io/REPO_NAME/", // update later
+  site: 'https://USERNAME.github.io/medical-center-eye-institute-site/',
   output: 'static',
-  base: '/',
+  base: '/medical-center-eye-institute-site/',
   markdown: {
-    draft: false
-  }
+    draft: false,
+  },
 })

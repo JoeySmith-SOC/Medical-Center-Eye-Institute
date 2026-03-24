@@ -1,12 +1,21 @@
-name: Build and Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,22 +23,27 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
+          cache: npm
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Astro site
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./dist
 
-# Notes:
-# - This workflow builds on push to `main` and deploys the `dist` folder to the `gh-pages` branch.
-# - Update `astro.config.mjs` -> `base` and `site` before publishing if you serve under
-#   `https://username.github.io/REPO_NAME/`.
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+# If the repository name changes later, update `site` and `base` in `astro.config.mjs`.
+# If you move to a custom domain later, update `site`, usually change `base` to '/',
+# and then add your custom domain in the GitHub Pages repository settings.

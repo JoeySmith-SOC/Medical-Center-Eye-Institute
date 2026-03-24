@@ -1,5 +1,16 @@
 ---
-const { eyebrow, title, copy, ctaText = 'Request Appointment', ctaHref = '/contact' } = Astro.props
+const {
+  eyebrow,
+  title,
+  copy,
+  ctaText = 'Request Appointment',
+  ctaHref = '/contact',
+  secondaryCtaText,
+  secondaryCtaHref,
+  mediaEyebrow = 'Demo Image Area',
+  mediaTitle = 'Office or provider photography placeholder',
+  mediaCopy = 'Use this space for a welcoming clinic image, diagnostic equipment, or a provider portrait once approved by the client.',
+} = Astro.props
 ---
 <section class="hero">
   <div class="container hero-grid">
@@ -9,10 +20,17 @@ const { eyebrow, title, copy, ctaText = 'Request Appointment', ctaHref = '/conta
       <p class="lead">{copy}</p>
       <div class="hero-ctas">
         <a class="btn primary" href={ctaHref}>{ctaText}</a>
+        {secondaryCtaText && secondaryCtaHref ? (
+          <a class="btn secondary" href={secondaryCtaHref}>{secondaryCtaText}</a>
+        ) : null}
       </div>
     </div>
-    <div class="hero-media" aria-hidden="true">
-      <div class="placeholder-img">Provider / Clinic photo placeholder</div>
-    </div>
+    <aside class="hero-media" aria-label="Featured clinic image placeholder">
+      <div class="placeholder-img">
+        <p class="placeholder-eyebrow">{mediaEyebrow}</p>
+        <h2>{mediaTitle}</h2>
+        <p>{mediaCopy}</p>
+      </div>
+    </aside>
   </div>
 </section>
