@@ -1,0 +1,27 @@
+---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+const { title, description } = Astro.props
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} — Medical Center Eye Institute` : 'Medical Center Eye Institute'}</title>
+    <meta name="description" content={description ?? 'Medical Center Eye Institute — placeholder content'} />
+    <meta property="og:title" content={title ?? 'Medical Center Eye Institute'} />
+    <meta property="og:description" content={description ?? 'Medical Center Eye Institute — placeholder content'} />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <div class="site-root">
+      <Header siteTitle="Medical Center Eye Institute" />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

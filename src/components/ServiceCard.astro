@@ -1,0 +1,15 @@
+---
+const { title, excerpt } = Astro.props
+---
+<article class="service-card">
+  <div class="service-card-inner">
+    <div class="service-icon" aria-hidden>
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="4" fill="#E6F6F4" />
+        <path d="M6 12h12" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h3>{title}</h3>
+    <p>{excerpt}</p>
+  </div>
+</article>

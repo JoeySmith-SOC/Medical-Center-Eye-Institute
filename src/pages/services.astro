@@ -1,0 +1,26 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+import ServiceCard from '../components/ServiceCard.astro'
+
+const pageTitle = 'Services'
+const pageDescription = 'Overview of sample services (placeholders).'
+---
+<MainLayout title={pageTitle} description={pageDescription}>
+  <section class="container">
+    <SectionHeader title="Our Services" subtitle="Sample placeholders pending client confirmation" />
+    <p class="muted">The following service entries are professional placeholders. Confirm actual services and descriptions with the client before publishing.</p>
+
+    <div class="services-list">
+      <ServiceCard title="Comprehensive Eye Exams" excerpt="Full eye health and vision assessments for adults and children." />
+      <ServiceCard title="Cataract Evaluations" excerpt="Assessment and management of cataract symptoms and treatment planning." />
+      <ServiceCard title="Glaucoma Care" excerpt="Screening, monitoring, and medical management to preserve vision." />
+      <ServiceCard title="Diabetic Eye Care" excerpt="Diabetic retinopathy screening and coordinated care planning." />
+      <ServiceCard title="Dry Eye Treatment" excerpt="Diagnosis and treatment planning for chronic dry eye symptoms." />
+      <ServiceCard title="Retina / Macular Care" excerpt="Evaluation and referral for retinal conditions as needed." />
+      <ServiceCard title="Pediatric & Family Eye Care" excerpt="Friendly, age-appropriate exams for children and families." />
+    </div>
+
+    <p class="muted small">Disclaimer: service descriptions above are placeholders and should be customized by the clinic. No clinical claims are made here.</p>
+  </section>
+</MainLayout>

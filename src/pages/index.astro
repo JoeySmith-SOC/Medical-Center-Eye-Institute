@@ -1,0 +1,65 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import Hero from '../components/Hero.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+import ServiceCard from '../components/ServiceCard.astro'
+import CTA from '../components/CTA.astro'
+
+const pageTitle = 'Home'
+const pageDescription = 'Welcome to Medical Center Eye Institute — placeholder content.'
+---
+<MainLayout title={pageTitle} description={pageDescription}>
+  <Hero
+    eyebrow="Comprehensive Eye Care"
+    title="Compassionate, Modern Eye Care"
+    copy="We provide thorough evaluations and personalized treatment plans. This is a design and content placeholder — replace with your clinic's messaging."
+    ctaText="Request Appointment"
+    ctaHref="/contact"
+  />
+
+  <section class="container about-preview">
+    <SectionHeader title="About the Practice" subtitle="Patient-focused care with a calm, modern approach." />
+    <p class="muted">This section is a concise practice summary placeholder. Replace with the practice mission, approach, and patient-first messaging.</p>
+  </section>
+
+  <section class="container services-preview">
+    <SectionHeader title="Featured Services" />
+    <div class="services-grid">
+      <ServiceCard title="Comprehensive Eye Exams" excerpt="Thorough exams for vision and eye health." />
+      <ServiceCard title="Cataract Evaluations" excerpt="Personalized evaluation for cataract treatment options." />
+      <ServiceCard title="Glaucoma Care" excerpt="Ongoing management and monitoring to protect vision." />
+    </div>
+  </section>
+
+  <section class="container why-us">
+    <SectionHeader title="Why Choose Us" />
+    <ul class="features-list">
+      <li>Patient-centered care</li>
+      <li>Modern diagnostic technology</li>
+      <li>Clear communication and follow-up</li>
+    </ul>
+  </section>
+
+  <section class="container providers">
+    <SectionHeader title="Our Providers" subtitle="Provider highlight placeholder" />
+    <div class="provider-card">
+      <div class="provider-photo">Provider photo placeholder</div>
+      <div>
+        <h3>Provider Name — Placeholder</h3>
+        <p class="muted">Bio placeholder. Do not include real names or credentials until the client provides them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container patient-preview">
+    <SectionHeader title="Patient Information" subtitle="Prepare for your visit" />
+    <p class="muted">Short preview — link to the detailed Patient Information page with forms, FAQs, and policies.</p>
+  </section>
+
+  <section class="container contact-preview">
+    <SectionHeader title="Contact & Location" />
+    <p class="muted">Address and phone placeholders. Replace with accurate contact details before publishing.</p>
+  </section>
+
+  <CTA title="Ready to Schedule?" copy="Contact our office to request an appointment. This is a placeholder CTA." ctaText="Request Appointment" ctaHref="/contact" />
+</MainLayout>

@@ -1,0 +1,36 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+
+const pageTitle = 'About'
+const pageDescription = 'Practice mission and philosophy — placeholder content.'
+---
+<MainLayout title={pageTitle} description={pageDescription}>
+  <section class="container">
+    <SectionHeader title="Our Mission" subtitle="Committed to clear communication and excellent care." />
+    <p class="muted">This is placeholder copy for the practice mission. Replace with the client's official mission statement and philosophy of care.</p>
+
+    <SectionHeader title="Philosophy of Care" />
+    <p class="muted">Patient education, evidence-based treatment, and individualized care plans are core to our approach (placeholder).</p>
+
+    <SectionHeader title="Provider Profile" />
+    <div class="provider-bio">
+      <div class="provider-photo">Photo placeholder</div>
+      <div>
+        <h3>Provider Name — Placeholder</h3>
+        <p class="muted">Bio placeholder. Do not include actual clinician names, credentials, or claims until provided by the client.</p>
+        <h4>Credentials</h4>
+        <ul class="muted">
+          <li>Credentials placeholder</li>
+        </ul>
+      </div>
+    </div>
+
+    <SectionHeader title="Office Values" />
+    <ul class="values-list">
+      <li>Compassionate care</li>
+      <li>Clear communication</li>
+      <li>Evidence-based practices</li>
+    </ul>
+  </section>
+</MainLayout>

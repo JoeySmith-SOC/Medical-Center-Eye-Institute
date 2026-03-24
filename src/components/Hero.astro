@@ -1,0 +1,18 @@
+---
+const { eyebrow, title, copy, ctaText = 'Request Appointment', ctaHref = '/contact' } = Astro.props
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
+      <h1>{title}</h1>
+      <p class="lead">{copy}</p>
+      <div class="hero-ctas">
+        <a class="btn primary" href={ctaHref}>{ctaText}</a>
+      </div>
+    </div>
+    <div class="hero-media" aria-hidden="true">
+      <div class="placeholder-img">Provider / Clinic photo placeholder</div>
+    </div>
+  </div>
+</section>

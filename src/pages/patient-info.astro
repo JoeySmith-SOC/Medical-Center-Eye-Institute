@@ -1,0 +1,36 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+
+const pageTitle = 'Patient Information'
+const pageDescription = 'What to bring, forms, insurance and office policies — placeholders.'
+---
+<MainLayout title={pageTitle} description={pageDescription}>
+  <section class="container">
+    <SectionHeader title="Before Your Visit" subtitle="What to bring" />
+    <ul class="muted">
+      <li>Photo ID</li>
+      <li>Insurance card(s) — if applicable</li>
+      <li>List of current medications</li>
+      <li>Previous eye records (if available)</li>
+    </ul>
+
+    <SectionHeader title="New Patient Expectations" />
+    <p class="muted">Arrive 15 minutes early to complete paperwork. Expect a comprehensive exam that may include dilation and testing as appropriate.</p>
+
+    <SectionHeader title="Insurance & Billing" />
+    <p class="muted">Insurance acceptance is a placeholder — confirm accepted plans with the clinic. Self-pay options can also be listed here.</p>
+
+    <SectionHeader title="Forms" />
+    <p class="muted">Provide downloadable form placeholders or a note: "Forms will be provided by the clinic." Replace with actual URLs when available.</p>
+
+    <SectionHeader title="Frequently Asked Questions" />
+    <dl class="faq muted">
+      <dt>Do you accept new patients?</dt>
+      <dd>Placeholder answer. Confirm acceptance and booking policies with the clinic.</dd>
+    </dl>
+
+    <SectionHeader title="Office Policies" />
+    <p class="muted">Cancellation and privacy policies should be provided by the clinic. This area is a placeholder for client-written policies.</p>
+  </section>
+</MainLayout>
