@@ -30,7 +30,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Astro site
         run: npm run build
@@ -44,6 +44,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# If the repository name changes later, update `site` and `base` in `astro.config.mjs`.
-# If you move to a custom domain later, update `site`, usually change `base` to '/',
-# and then add your custom domain in the GitHub Pages repository settings.
+# This project currently uses `npm install` because the repository does not
+# include a package-lock.json yet. If you commit a lockfile later, you can
+# switch this step to `npm ci` for more reproducible installs.

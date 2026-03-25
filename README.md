@@ -6,11 +6,11 @@ Overview
 
 - Framework: Astro
 - Styling: Plain CSS (src/styles/global.css)
-- Output: Static site (prepared for future GitHub Pages deployment)
+- Output: Static site deployed to GitHub Pages
 
 Quick start
 
-1. Install dependencies
+1. Install dependencies locally
 
 ```bash
 npm install
@@ -43,58 +43,76 @@ Repository layout
   - `pages/` — top-level pages (index + placeholder pages)
   - `styles/global.css` — global variables and base styles
 - `public/` — static assets (favicon, images)
-- `.github/workflows/` — CI workflow folder (placeholder for GitHub Pages workflow)
+- `.github/workflows/` — GitHub Actions workflow for Pages deployment
 
-GitHub Pages deployment
+GitHub Pages Deployment
 
-This project is configured for GitHub Pages using the official Astro-recommended GitHub Actions workflow.
+This Astro project is configured to deploy to GitHub Pages through GitHub Actions.
 
-Current placeholder deployment values
+Published URL
 
-- Repository name placeholder: `medical-center-eye-institute-site`
-- Expected GitHub Pages URL pattern: `https://USERNAME.github.io/medical-center-eye-institute-site/`
-- Config file: `astro.config.mjs`
+- `https://joeysmith-soc.github.io/Medical-Center-Eye-Institute/`
 
-What to update in `astro.config.mjs`
+Current Astro Pages settings
 
 - `site`
-  - Current placeholder: `https://USERNAME.github.io/medical-center-eye-institute-site/`
-  - Update `USERNAME` to the GitHub account or organization that owns the repository.
-  - If the repository name changes later, update that part of the URL too.
+  - `https://joeysmith-soc.github.io/Medical-Center-Eye-Institute/`
 - `base`
-  - Current placeholder: `/medical-center-eye-institute-site/`
-  - For a GitHub Pages project site, this must match the repository name with leading and trailing slashes.
-  - If the repository name changes later, update `base` to match.
-
-Examples
-
-- If the repo becomes `vision-demo`, use:
-  - `site: 'https://USERNAME.github.io/vision-demo/'`
-  - `base: '/vision-demo/'`
-- If you later add a custom domain, you will usually change to:
-  - `site: 'https://www.yourdomain.com'`
-  - `base: '/'`
+  - `/Medical-Center-Eye-Institute/`
+- `output`
+  - `static`
 
 Workflow
 
 - The GitHub Actions workflow is in `.github/workflows/deploy.yml`
 - It builds and deploys automatically on pushes to the `main` branch
+- It also supports manual runs with `workflow_dispatch`
 - It uses the GitHub Pages artifact-based deployment flow recommended for Astro
 
-How to enable GitHub Pages in repository settings
+Run locally
 
-1. Push this repository to GitHub.
-2. Open the repository on GitHub.
-3. Go to `Settings` > `Pages`.
-4. Under `Build and deployment`, set `Source` to `GitHub Actions`.
-5. Push to `main`, or run the workflow manually from the `Actions` tab.
+1. Install dependencies:
 
-Default GitHub Pages URL
+```bash
+npm install
+```
 
-- Project sites normally publish to:
-  - `https://USERNAME.github.io/REPOSITORY_NAME/`
-- With the current placeholder setup, that would be:
-  - `https://USERNAME.github.io/medical-center-eye-institute-site/`
+2. Start the local dev server:
+
+```bash
+npm run dev
+```
+
+3. Build the static site locally:
+
+```bash
+npm run build
+```
+
+4. Preview the production build:
+
+```bash
+npm run preview
+```
+
+How deployment works
+
+- Push to the `main` branch.
+- GitHub Actions installs dependencies, builds the Astro site, uploads the `dist/` folder, and deploys it to GitHub Pages.
+- You can also trigger the same deployment manually from the `Actions` tab using the `workflow_dispatch` option.
+
+Note about `package-lock.json`
+
+- This repository does not currently include a `package-lock.json`.
+- Because of that, the workflow uses `npm install` instead of `npm ci`.
+- If you want fully locked, reproducible installs later, run `npm install` locally and commit the generated `package-lock.json`, then you can change the workflow install step to `npm ci`.
+
+If a custom domain is added later
+
+- Update `site` in `astro.config.mjs` to your final domain, for example `https://www.example.com`.
+- In most custom-domain setups, change `base` in `astro.config.mjs` to `/`.
+- Add the custom domain in the GitHub repository `Settings` > `Pages`.
+- If GitHub Pages creates a `CNAME` file for the custom domain, keep it committed if that becomes part of your setup.
 
 Important content and compliance notes
 
