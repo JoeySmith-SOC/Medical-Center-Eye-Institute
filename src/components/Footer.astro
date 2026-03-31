@@ -1,34 +1,38 @@
 ---
+import { legalLinks, navigationLinks, siteName, withBase } from '../utils/site'
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <h3>Medical Center Eye Institute</h3>
-      <p class="muted">Modern ophthalmology care with placeholder demo content prepared for client review.</p>
+      <h3>{siteName}</h3>
+      <p class="muted">
+        Refined ophthalmology care with calm, patient-centered placeholder content prepared for client review.
+      </p>
     </div>
     <div>
       <h4>Quick Links</h4>
       <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/patient-information">Patient Information</a></li>
-        <li><a href="/contact">Contact</a></li>
+        {navigationLinks.map((item) => (
+          <li><a href={withBase(item.href)}>{item.label}</a></li>
+        ))}
       </ul>
     </div>
     <div>
       <h4>Contact</h4>
       <address class="footer-contact">
-        Placeholder phone: <a href="tel:+10000000000">(000) 000-0000</a><br />
-        Placeholder address: 123 Medical Plaza, Suite 200<br />
-        City, State ZIP<br />
-        Office hours pending client confirmation
+        <span>
+          Placeholder phone: <a href="tel:+10000000000">(000) 000-0000</a>
+        </span>
+        <span>Placeholder address: 123 Medical Plaza, Suite 200, City, State ZIP</span>
+        <span>Placeholder office hours: Monday-Friday, 8:00 AM-5:00 PM</span>
+        <span>Final office details pending client confirmation</span>
       </address>
       <ul class="footer-links footer-legal">
-        <li><a href="/privacy">Privacy</a></li>
-        <li><a href="/terms">Terms</a></li>
+        {legalLinks.map((item) => (
+          <li><a href={withBase(item.href)}>{item.label}</a></li>
+        ))}
       </ul>
     </div>
   </div>
-  <div class="container copyright">© {new Date().getFullYear()} Medical Center Eye Institute. Demo content only.</div>
+  <div class="container copyright">© {new Date().getFullYear()} {siteName}. Demo content only.</div>
 </footer>

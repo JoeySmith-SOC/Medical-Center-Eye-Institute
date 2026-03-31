@@ -7,29 +7,54 @@ const {
   ctaHref = '/contact',
   secondaryCtaText,
   secondaryCtaHref,
-  mediaEyebrow = 'Demo Image Area',
+  highlights = [],
+  mediaEyebrow = 'Approved imagery pending',
   mediaTitle = 'Office or provider photography placeholder',
   mediaCopy = 'Use this space for a welcoming clinic image, diagnostic equipment, or a provider portrait once approved by the client.',
+  mediaDetails = [],
 } = Astro.props
 ---
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
       {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
-      <h1>{title}</h1>
-      <p class="lead">{copy}</p>
+      <div class="hero-intro">
+        <h1>{title}</h1>
+        <p class="lead">{copy}</p>
+      </div>
+      {highlights.length ? (
+        <ul class="hero-highlights" aria-label="Practice highlights">
+          {highlights.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      ) : null}
       <div class="hero-ctas">
-        <a class="btn primary" href={ctaHref}>{ctaText}</a>
+        <a class="btn primary large" href={ctaHref}>{ctaText}</a>
         {secondaryCtaText && secondaryCtaHref ? (
-          <a class="btn secondary" href={secondaryCtaHref}>{secondaryCtaText}</a>
+          <a class="btn secondary large" href={secondaryCtaHref}>{secondaryCtaText}</a>
         ) : null}
       </div>
     </div>
     <aside class="hero-media" aria-label="Featured clinic image placeholder">
-      <div class="placeholder-img">
-        <p class="placeholder-eyebrow">{mediaEyebrow}</p>
-        <h2>{mediaTitle}</h2>
-        <p>{mediaCopy}</p>
+      <div class="hero-visual">
+        <div class="hero-visual-main">
+          <p class="placeholder-eyebrow">{mediaEyebrow}</p>
+          <div class="hero-visual-copy">
+            <h2>{mediaTitle}</h2>
+            <p>{mediaCopy}</p>
+          </div>
+        </div>
+        {mediaDetails.length ? (
+          <div class="hero-visual-details">
+            {mediaDetails.map((item) => (
+              <div class="hero-visual-card">
+                <span>{item.label}</span>
+                <strong>{item.title}</strong>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     </aside>
   </div>

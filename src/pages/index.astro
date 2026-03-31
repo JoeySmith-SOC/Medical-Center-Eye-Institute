@@ -4,31 +4,57 @@ import Hero from '../components/Hero.astro'
 import SectionHeader from '../components/SectionHeader.astro'
 import ServiceCard from '../components/ServiceCard.astro'
 import MainLayout from '../layouts/MainLayout.astro'
+import { siteName, withBase } from '../utils/site'
 
 const pageTitle = 'Home'
 const pageDescription =
-  'Medical Center Eye Institute is a modern ophthalmology practice demo website featuring patient-centered eye care, specialty services, and a polished appointment experience.'
+  `${siteName} is a polished ophthalmology practice demo homepage featuring premium placeholder content for trusted eye care, specialty services, and patient support.`
+
+const heroHighlights = [
+  'Comprehensive ophthalmology visits',
+  'Modern diagnostic approach',
+  'Patient-first communication',
+]
+
+const heroMediaDetails = [
+  {
+    label: 'Placeholder one',
+    title: 'Reception or clinic interior imagery',
+  },
+  {
+    label: 'Placeholder two',
+    title: 'Diagnostic suite or exam-lane photography',
+  },
+  {
+    label: 'Placeholder three',
+    title: 'Provider portrait or team photography',
+  },
+]
 
 const featuredServices = [
   {
+    eyebrow: 'Routine Eye Care',
     title: 'Comprehensive Eye Exams',
     excerpt:
-      'Routine and preventive visits designed to support clear vision, long-term ocular health, and thoughtful conversations about your concerns.',
+      'Comprehensive evaluations for routine care, vision changes, and long-term ocular health planning in a calm clinical setting.',
   },
   {
+    eyebrow: 'Surgical Consultation',
     title: 'Cataract Evaluations',
     excerpt:
-      'Clear, reassuring assessments for patients experiencing visual changes and exploring next steps with confidence.',
+      'Clear, supportive conversations for patients noticing cataract symptoms and considering whether a consultation is appropriate.',
   },
   {
+    eyebrow: 'Ongoing Management',
     title: 'Glaucoma Care',
     excerpt:
-      'Ongoing monitoring and treatment planning supported by modern diagnostics and careful follow-up.',
+      'Thoughtful monitoring and care planning designed to support consistency, education, and informed decision-making over time.',
   },
   {
+    eyebrow: 'Retinal Health',
     title: 'Diabetic Eye Care',
     excerpt:
-      'Focused retinal health evaluations that help patients stay proactive about diabetes-related vision changes.',
+      'Focused retinal assessment and follow-up for patients managing diabetes and protecting long-term vision health.',
   },
 ]
 
@@ -36,55 +62,71 @@ const valuePoints = [
   {
     title: 'Compassionate care',
     copy:
-      'Each visit is designed to feel welcoming, unrushed, and attentive to the questions patients bring with them.',
+      'Each visit is framed around calm communication, respectful listening, and an experience that feels attentive from arrival onward.',
   },
   {
     title: 'Modern diagnostics',
     copy:
-      'Clinical decision-making is supported by contemporary ophthalmic technology and a careful, evidence-informed approach.',
+      'Clinical planning is supported by contemporary ophthalmic technology and a thoughtful, measured approach to evaluation.',
   },
   {
     title: 'Personalized treatment',
     copy:
-      'Recommendations are tailored to each patient’s vision needs, medical history, and lifestyle priorities.',
+      'Recommendations can be tailored to a patient’s symptoms, medical history, visual priorities, and comfort with next steps.',
   },
   {
-    title: 'Convenient patient support',
+    title: 'Patient-focused support',
     copy:
-      'From appointment planning to visit preparation, the experience is organized to feel clear and manageable.',
+      'From scheduling to visit preparation, communication is organized to feel clear, manageable, and reassuring.',
   },
+]
+
+const providerFocusAreas = [
+  'Placeholder specialty focus',
+  'Placeholder clinical interests',
+  'Placeholder care philosophy',
+]
+
+const patientInformationItems = [
+  'Placeholder new-patient forms and intake packets',
+  'Insurance participation and referral guidance pending confirmation',
+  'Visit preparation details for arrival time, medications, and eyewear',
 ]
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
   <Hero
-    eyebrow="Ophthalmology Care"
-    title="Trusted eye care with a calm, modern patient experience."
-    copy="Medical Center Eye Institute is a demo ophthalmology practice website created to showcase a reassuring, premium digital presence for comprehensive eye care, specialty evaluation, and ongoing patient support."
+    eyebrow="Trusted Vision Care"
+    title="Focused on clear vision, thoughtful care, and confidence at every visit."
+    copy="Medical Center Eye Institute is presented here as a modern ophthalmology practice with a calm, premium patient experience. This homepage uses polished placeholder content to showcase comprehensive eye care, specialty evaluation, and reassuring visit guidance for a client demo."
     ctaText="Request Appointment"
-    ctaHref="/contact"
+    ctaHref={withBase('/contact')}
     secondaryCtaText="View Services"
-    secondaryCtaHref="/services"
-    mediaEyebrow="Image Placeholder"
-    mediaTitle="Future office or provider photography"
-    mediaCopy="Replace this panel with approved clinic imagery, a provider portrait, or an exam-room photo once final creative assets are available."
+    secondaryCtaHref={withBase('/services')}
+    highlights={heroHighlights}
+    mediaEyebrow="Approved photography pending"
+    mediaTitle="A welcoming office or provider image can live here."
+    mediaCopy="Replace this visual area with final clinic photography, provider imagery, or exam-room photography once assets are approved by the client."
+    mediaDetails={heroMediaDetails}
   />
 
-  <section class="section-shell">
+  <section class="section-shell section-shell--lined">
     <div class="container section-grid section-grid--about">
-      <div>
-        <SectionHeader
-          title="A patient-centered approach to ophthalmology"
-          subtitle="Thoughtful communication, a polished clinical environment, and a focus on long-term vision health."
-        />
-      </div>
+      <SectionHeader
+        eyebrow="About the Practice"
+        title="Care that feels attentive from the first visit forward."
+        subtitle="The practice introduction is designed to communicate calm professionalism, clinical precision, and a clear focus on patient experience."
+      />
       <div class="info-panel">
         <p>
-          This homepage preview presents a calm, trustworthy introduction to the practice. The copy is intentionally polished and
-          realistic while remaining placeholder content until client details, provider profiles, and final office information are
-          confirmed.
+          Medical Center Eye Institute is positioned as a refined ophthalmology practice where patients can expect thoughtful
+          communication, careful evaluation, and a welcoming environment that supports confidence in their care.
         </p>
-        <a class="btn secondary" href="/about">About the Practice</a>
+        <p class="muted">
+          This preview keeps the language realistic and demo-ready while reserving provider biographies, photography, and final
+          office details for client-approved content.
+        </p>
+        <a class="btn secondary" href={withBase('/about')}>Learn About the Practice</a>
       </div>
     </div>
   </section>
@@ -92,17 +134,18 @@ const valuePoints = [
   <section class="section-shell section-shell--tinted" aria-labelledby="featured-services-heading">
     <div class="container">
       <SectionHeader
+        eyebrow="Featured Services"
         headingId="featured-services-heading"
         title="Featured services"
-        subtitle="Core ophthalmology service highlights presented with concise, demo-ready descriptions."
+        subtitle="Core ophthalmology offerings are introduced with concise, polished descriptions suitable for a premium client demo."
       />
       <div class="services-grid">
         {featuredServices.map((service) => (
-          <ServiceCard title={service.title} excerpt={service.excerpt} />
+          <ServiceCard title={service.title} excerpt={service.excerpt} eyebrow={service.eyebrow} />
         ))}
       </div>
       <div class="section-actions">
-        <a class="btn secondary" href="/services">Explore All Services</a>
+        <a class="btn secondary" href={withBase('/services')}>View All Services</a>
       </div>
     </div>
   </section>
@@ -110,9 +153,10 @@ const valuePoints = [
   <section class="section-shell" aria-labelledby="why-choose-us-heading">
     <div class="container">
       <SectionHeader
+        eyebrow="Why Choose Us"
         headingId="why-choose-us-heading"
         title="Why patients choose us"
-        subtitle="A premium care experience should feel both clinically confident and genuinely supportive."
+        subtitle="A strong ophthalmology website should balance clinical credibility with warmth, clarity, and support."
       />
       <div class="value-grid">
         {valuePoints.map((item) => (
@@ -126,25 +170,37 @@ const valuePoints = [
   </section>
 
   <section class="section-shell section-shell--soft">
-    <div class="container provider-highlight">
-      <div class="provider-visual" aria-hidden="true">
-        <div class="provider-photo">Provider photo placeholder</div>
-      </div>
-      <div class="provider-copy">
-        <SectionHeader
-          title="Provider highlight"
-          subtitle="Placeholder profile content for physician biography and credentials."
-        />
-        <p>
-          Placeholder bio: introduce the lead ophthalmologist or provider team here with a warm overview of philosophy, specialty
-          focus, and approach to patient care.
-        </p>
-        <p class="muted">
-          Placeholder credentials: add verified education, board certification, fellowship training, affiliations, and professional
-          distinctions after client approval.
-        </p>
-        <a class="btn secondary" href="/about">Meet the Team</a>
-      </div>
+    <div class="container">
+      <article class="provider-card">
+        <div class="provider-card__media" aria-hidden="true">
+          <div class="provider-silhouette">
+            <div class="provider-silhouette__avatar"></div>
+            <div class="provider-silhouette__body"></div>
+          </div>
+          <div class="provider-photo-chip">Provider photo placeholder</div>
+        </div>
+        <div class="provider-card__copy">
+          <SectionHeader
+            eyebrow="Provider Highlight"
+            title="Placeholder Provider Name"
+            subtitle="Placeholder biography, credentials, and profile details pending client confirmation."
+          />
+          <p>
+            Use this section to introduce the lead physician or provider team with a concise overview of clinical philosophy,
+            patient communication style, and the type of care experience the practice wants to convey.
+          </p>
+          <p class="muted">
+            Credentials placeholder: add verified education, board certification, fellowship training, affiliations, and approved
+            distinctions only after final review.
+          </p>
+          <div class="provider-tags" aria-label="Placeholder provider focus areas">
+            {providerFocusAreas.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+          <a class="btn secondary" href={withBase('/about')}>Visit the About Page</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -152,21 +208,32 @@ const valuePoints = [
     <div class="container preview-grid">
       <article class="content-card">
         <SectionHeader
-          title="Patient information"
-          subtitle="A simple introduction to what new patients can expect before their visit."
+          eyebrow="Patient Information"
+          title="Set expectations before the visit."
+          subtitle="The patient information preview gives visitors a clear sense of what they can prepare in advance."
         />
         <p>
-          The patient information section can guide visitors through forms, insurance placeholders, visit preparation, and arrival
-          expectations in a way that feels organized and reassuring.
+          This section can help patients feel prepared with simple, friendly guidance around forms, insurance, and visit-day
+          expectations without overwhelming them.
         </p>
-        <a class="btn secondary" href="/patient-information">Patient Information</a>
+        <ul class="info-list">
+          {patientInformationItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <a class="btn secondary" href={withBase('/patient-information')}>Go to Patient Information</a>
       </article>
 
       <article class="content-card">
         <SectionHeader
-          title="Contact preview"
-          subtitle="Key office details are shown here as placeholders pending client confirmation."
+          eyebrow="Contact Preview"
+          title="Office details are ready for final confirmation."
+          subtitle="Contact information is intentionally shown as polished placeholder content until the client approves the final details."
         />
+        <p>
+          The contact page can provide a calm, straightforward path for patients to call the office, locate the clinic, and review
+          office hours.
+        </p>
         <dl class="contact-list">
           <div>
             <dt>Phone</dt>
@@ -181,17 +248,17 @@ const valuePoints = [
             <dd>Mon-Fri, 8:00 AM-5:00 PM; hours pending confirmation</dd>
           </div>
         </dl>
-        <p class="muted">All contact details above are placeholders for demo use only until final office information is provided.</p>
-        <a class="btn secondary" href="/contact">Contact Us</a>
+        <p class="muted">All details above are placeholders for demo use only until final office information is provided.</p>
+        <a class="btn secondary" href={withBase('/contact')}>Open Contact Page</a>
       </article>
     </div>
   </section>
 
   <CTA
-    eyebrow="Schedule a Visit"
-    title="Ready to request an appointment?"
-    copy="When the practice is ready to launch, this call to action can guide patients toward the next step with clear, reassuring language and a streamlined contact experience."
+    eyebrow="Request an Appointment"
+    title="Start with a calm, clear next step."
+    copy="This final call to action gives patients a reassuring invitation to request care while the full contact and scheduling workflow is finalized."
     ctaText="Request Appointment"
-    ctaHref="/contact"
+    ctaHref={withBase('/contact')}
   />
 </MainLayout>

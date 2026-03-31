@@ -1,21 +1,32 @@
 ---
-const { siteTitle = 'Medical Center Eye Institute' } = Astro.props
+import { navigationLinks, siteName, withBase } from '../utils/site'
+
+const { siteTitle = siteName, currentPath = '/' } = Astro.props
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/" aria-label={`${siteTitle} home`}>
-      <span class="logo-mark" aria-hidden="true"></span>
+    <a class="logo" href={withBase('/')} aria-label={`${siteTitle} home`}>
       <span class="logo-text">{siteTitle}</span>
     </a>
     <nav class="nav" aria-label="Primary">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/patient-information">Patient Information</a></li>
-        <li><a href="/contact">Contact</a></li>
+        {navigationLinks.map((item) => {
+          const isActive = currentPath === item.href
+
+          return (
+            <li>
+              <a
+                class:list={{ 'is-active': isActive }}
+                href={withBase(item.href)}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </nav>
-    <a class="btn primary nav-cta" href="/contact">Request Appointment</a>
+    <a class="btn primary nav-cta" href={withBase('/contact')}>Request Appointment</a>
   </div>
 </header>
